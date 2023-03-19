@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "cbed84fc-fc00-4285-ae17-18cdc36b8791",
+		"name": "ticketing-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "account-service",
+			"item": [
+				{
+					"name": "signin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc4MzM0OTc2fQ.xlMXHePV7tvWNP32upzTZpS7lfCSfTGWDIIqk7Qgf1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify/signin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc4MzM0OTc2fQ.xlMXHePV7tvWNP32upzTZpS7lfCSfTGWDIIqk7Qgf1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://13.53.171.68:8000/signin",
+							"protocol": "http",
+							"host": [
+								"13",
+								"53",
+								"171",
+								"68"
+							],
+							"port": "8000",
+							"path": [
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signup",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\" : \"savvas\",\r\n    \"last_name\": \"kattimeris\",\r\n    \"profile_picture\": \"sdfghjjgfdsa\",\r\n    \"user_name\" : \"savvasK\",\r\n    \"email_address\" : \"savvas@gmail.com\",\r\n    \"password\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://13.53.171.68:8000/signup",
+							"protocol": "http",
+							"host": [
+								"13",
+								"53",
+								"171",
+								"68"
+							],
+							"port": "8000",
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-basic-details",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));\r",
+									"\r",
+									"postman.setEnvironmentVariable(\"something\", CryptoJS.digest)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc4NjM1MjI2fQ.cLhjPduPQRMUlXx4ntTkRJjB6NEo2BgfbY8jeczAM7Y",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_name\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/basic-details",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"basic-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testToken",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhdnZhc0siLCJleHAiOjE2NzgzNjU2MTN9.seYxfUz-1q86bjV8WwveLhNouP6_6rl-4T5HNll790s",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\" : \"john\",\r\n    \"last_name\": \"doe\",\r\n    \"profile_picture\": \"sdfghjjgfdsa\",\r\n    \"user_name\" : \"xyz\",\r\n    \"email_address\" : \"xyz@gmail.com\",\r\n    \"password\" : \"doe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/testToken",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"testToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh-token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc4MzM1MDQ0fQ.nGGzeqo0C1PkN10XM_7o63WvzVSlTytvrXABPzUToys",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\" : \"john\",\r\n    \"last_name\": \"doe\",\r\n    \"profile_picture\": \"sdfghjjgfdsa\",\r\n    \"user_name\" : \"xyz\",\r\n    \"email_address\" : \"xyz@gmail.com\",\r\n    \"password\" : \"doe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/refresh-token",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "booking",
+			"item": [
+				{
+					"name": "booking",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc5MTg3ODM4fQ.38BkKzltHwIn6xYU-ZW2KIro-_X6W1teXD7kCrvXIeE",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_name\" : \"admin\",\r\n    \"event_id\" : \"3c13339c-84a5-4d3f-90eb-1d2ba829ce4f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8500/book-event",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"book-event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "qrscan-verify",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc4NjAyMTQzfQ.aFWjszMwxE0EZJZ7I_eQGJMsH3WvMRbN4ZhXJsbnMgw",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"digital_signature\" : \"YHLLtBW9JsvnViB++lBSimNRnups+qFqXG/1bCn+94W581u/vdv5cK/8AJzWu9R9BgRBqFAqaDP2rSCpD/adrtXfJF/S0OagQTZFZJyqrBvGuMKWRwDjHceLp+Zok1FZ0/4i/7XKRYq7GeMiHzOVr/z+mB6D9d27Eq1RgWsXUF8sk9l35f7Xn4Wu3Ug09PmIOAdU8aIlut2lXU9GbuL4PSzKfuXi+Z/yhWshQdlNTok7fOPAQ/4R7hzJPYjFr8I9lVXe+tCn2nvAOx36P3AEv/LhwkMnPg0H7Gwvv+uCx4u2XykupzVAZ2yLF0IFcX3qkju5HY4BIS8zpk+e23makg==\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8500/qrscan-verify",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"qrscan-verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-events",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc5MTg3ODM4fQ.38BkKzltHwIn6xYU-ZW2KIro-_X6W1teXD7kCrvXIeE",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_name\" : \"admin\",\r\n    \"event_id\" : \"4cde4921-497b-427c-a538-0e280e43b80c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8500/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-users-booking",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjc4NzYwODI5fQ.ZzKc7lFQVAe0VsHX7U5c6ko-P5W8TwAiohy9yporjzs",
+								"type": "default"
+							},
+							{
+								"key": "something",
+								"value": "{{something}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_name\" : \"admin\",\r\n    \"event_id\" : \"f7bf5086-d99d-4a90-b394-44fb2a8546cc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8500/booking",
+							"host": [
+								"localhost"
+							],
+							"port": "8500",
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "verification",
+			"item": [
+				{
+					"name": "verify-qr-code",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"hmac\", CryptoJS.HmacSHA256(request.data, 'mysecret').toString(CryptoJS.digest));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Signature",
+								"value": "{{hmac}}",
+								"type": "default"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluYWRtaW4iLCJleHAiOjE2NzkxODgxNDR9.iJRn8emM_aYe-8C88zY59QLPMXga77uMZO42SLG8g4o",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"digital_signature\" : \"aNMJIr6sXudrM1ASPO1QSgEENCWCighSZ15L+QJUbbsPYYu1YWaTZ3ldB2PsubatwewK/rGbRFIb9J8TzwBHN/SGMrTOK13EF7I8SP3t0DVddBbzNbOiddbZMZS9gM9/BhLQa3lSwlnkiqDPhUSZF6ghSNPOR+CoE641Z+FRzRSRUKBPIL9VGAye1BlSxe/cP2aCwuq1BRT41U/kprxMnfHOp6JWKmh/YhkacN/2ncpm3MslzeCYFS1EoDbpR7IGY10famgGzid1ck1+PAkX3rkzZ+UJSPbm/6VkEfOi4mnbF4aYpB7SB65WgXrwlktxa6gfhTRpTbJMjrZhIo/+Gw==\",\r\n    \"otp\" : \"498081\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/verify-qr-code",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"verify-qr-code"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
